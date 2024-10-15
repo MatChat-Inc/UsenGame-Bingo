@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Widgets
   m_EditorClassIdentifier: 
   m_GroupName: Widgets
+  m_Data:
+    m_SerializedData: []
   m_GUID: cda2137e5028cbf448e043a8ea045fe3
   m_SerializeEntries:
   - m_GUID: 0fed4de471319e7478fc81fb1ddc3a3d
@@ -21,49 +23,42 @@ MonoBehaviour:
     m_SerializedLabels:
     - UI
     - USEN.Games.Common
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 2967fa821446f1549be2f712e2567646
     m_Address: global.WidgetChild
     m_ReadOnly: 0
     m_SerializedLabels:
     - UI
     - global
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 47a110af9f5ede448896933caa6a6fc1
     m_Address: USEN.Games.Common.AppInfoView
     m_ReadOnly: 0
     m_SerializedLabels:
     - UI
     - USEN.Games.Common
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 600c78dba20a79c4d8476f538e27d9f7
     m_Address: USEN.Games.HighLow.HighLowSettingsView
     m_ReadOnly: 0
     m_SerializedLabels:
     - UI
     - USEN.Games.HighLow
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: aabacd6beb79a644786614295621789a
     m_Address: global.StatefulWidgetChild
     m_ReadOnly: 0
     m_SerializedLabels:
     - UI
     - global
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c3dc8e32bc0cb3b4c83d876e18ae0fc6
     m_Address: global.WidgetChild
     m_ReadOnly: 0
     m_SerializedLabels:
     - UI
     - global
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: cab492afe31353d4aa721c22d4ca32ed
     m_Address: global.StatefulWidgetChild
     m_ReadOnly: 0
     m_SerializedLabels:
     - UI
     - global
-    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 5fb9abfb9f8a51d45b29881337ae0163, type: 2}
   m_SchemaSet:

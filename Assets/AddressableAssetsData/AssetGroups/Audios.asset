@@ -1,0 +1,170 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Audios
+  m_EditorClassIdentifier: 
+  m_GroupName: Audios
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 10632e4846766794b96478b3fd223d90
+  m_SerializeEntries:
+  - m_GUID: 803f5b66bac024a0f93741a535ca6bd7
+    m_Address: Assets/Resources/Audio/key_timer.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Audio
+  - m_GUID: c37d0f1c63b1649b1a0f344776bfccc9
+    m_Address: Assets/Resources/Audio/10sec.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Audio
+  - m_GUID: 36ada7173615e42e4873dec6564e073d
+    m_Address: Assets/Resources/Audio/low.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Audio
+  - m_GUID: 22613295ed4884c9c90a17325ae9c7fb
+    m_Address: Assets/Resources/Audio/key_start.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Audio
+  - m_GUID: ef09911f31966e94ea2e79dba7471311
+    m_Address: Assets/Resources/DefaultTheme/Audio/will_reach_sample.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Audio
+  - m_GUID: e744efd42fbb6a64fa8ca4c81fddb477
+    m_Address: Assets/Resources/ChristmasThemes/Audio/bingo_sample.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Audio
+  - m_GUID: 3b49a3d79b5ca3140b0ddd91a7aa3bb9
+    m_Address: Assets/Resources/DefaultTheme/Audio/Number_check_sample.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Audio
+  - m_GUID: 48540d9786ab6d24797cff636942d275
+    m_Address: Assets/Resources/DefaultTheme/Audio/Number_rotate_sample.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Audio
+  - m_GUID: bbb80af1f859b4dde88f6b6e29763f6b
+    m_Address: Assets/Resources/Audio/send_poker.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Audio
+  - m_GUID: e6ea512d1f05d1c40aedc30e2fe1911a
+    m_Address: Assets/Resources/DefaultTheme/Audio/bgm.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Audio
+  - m_GUID: 8155176a22cc94e6ba38928764c7ab21
+    m_Address: Assets/Resources/Audio/entry_key_select.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Audio
+  - m_GUID: fd340a2eb2a01cf4eb96d696ead8d20f
+    m_Address: Assets/Resources/ChristmasThemes/Audio/bgm.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Audio
+  - m_GUID: b64887ed5052644cf997231340b42d0e
+    m_Address: Assets/Resources/Audio/high.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Audio
+  - m_GUID: 54b1bbeb92acd424d80a8b0e5d052c9b
+    m_Address: Assets/Resources/Audio/20sec.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Audio
+  - m_GUID: f838ec1c4f1241446b2093222a051b43
+    m_Address: Assets/Resources/ChristmasThemes/Audio/Number_check_sample.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Audio
+  - m_GUID: cabb969b33bd5e648af647d9d4997ed0
+    m_Address: Assets/Resources/ChristmasThemes/Audio/will_reach_sample.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Audio
+  - m_GUID: 036e3a3ade5d09b478525cd9e423797e
+    m_Address: Assets/Resources/DefaultTheme/Audio/bingo_sample.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Audio
+  - m_GUID: 83be344fc082d4107969e4532eb5701a
+    m_Address: Assets/Resources/Audio/entry_bgm.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Audio
+  - m_GUID: 48311c713f0f74c37b44148419951adb
+    m_Address: Assets/Resources/Audio/timer_start.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Audio
+  - m_GUID: cdb9782a4370f3c45990041ecd6b85a2
+    m_Address: Assets/Resources/ChristmasThemes/Audio/Number_rotate_sample.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Audio
+  - m_GUID: 68d3d7560f3e2ce489a6c08ef7897e10
+    m_Address: Assets/Resources/ChristmasThemes/Audio/Reach_click_sample.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Audio
+  - m_GUID: b99c332457dcf4e709f276fba4c19b15
+    m_Address: Assets/Resources/Audio/30sec.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Audio
+  - m_GUID: 7dcdfd5048c5dea449597262a9eeae23
+    m_Address: Assets/Resources/Audio/Key_effect.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Audio
+  - m_GUID: ceb3438bd987f114a8c574d0db370fee
+    m_Address: Assets/Resources/DefaultTheme/Audio/Reach_click_sample.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Audio
+  - m_GUID: 1e2eb858f51cd476d879dd3888155a36
+    m_Address: Assets/Resources/Audio/key_back.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Audio
+  - m_GUID: e885484e1bc99fb47a0ac3f6bfa586b1
+    m_Address: Packages/com.esotericsoftware.spine.spine-unity-examples/Sound/Footstep.ogg
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Audio
+  - m_GUID: 532e417ffa3f95747908419a00be3780
+    m_Address: Packages/com.esotericsoftware.spine.spine-unity-examples/Sound/Hardfall.ogg
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Audio
+  - m_GUID: 51f0c54706b53c14c9c24bbd63bb18a6
+    m_Address: Packages/com.esotericsoftware.spine.spine-unity-examples/Sound/Jump.ogg
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Audio
+  - m_GUID: e986056f914f4974896a49527ca80041
+    m_Address: Packages/com.esotericsoftware.spine.spine-unity-examples/Sound/Spineboygun.ogg
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Audio
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 5fb9abfb9f8a51d45b29881337ae0163, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: d63e6df165f4c4e40a90d2e908b0f8e2, type: 2}
+    - {fileID: 11400000, guid: c4d2dd1b3897b5640b78fc06151afb9f, type: 2}
