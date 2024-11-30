@@ -9,6 +9,11 @@ public class BingoSettingsView : AbstractView, IViewOperater
     Button m_maxCellSettingButton;
     Text m_maxCellSettingText;
     bool m_isSelectedCellCountButton;
+    Slider m_BGMVolumeSlider;
+    Slider m_EffectVolumeSlider;
+    Text m_BGMVolumeText;
+    Text m_EffectVolumeText;
+    bool m_isPresettingEffectVolume;
     Button m_aboutButton;
     GameObject m_aboutButtonSelectedBg;
     float m_deltaTime = 0;
@@ -37,6 +42,18 @@ public class BingoSettingsView : AbstractView, IViewOperater
         m_maxCellSettingText = m_mainViewGameObject.transform.Find("Panel/CenterPanel/MaxCellSetting/MaxCellCount/Count").GetComponent<Text>();
         m_maxCellSettingArrows = m_mainViewGameObject.transform.Find("Panel/CenterPanel/MaxCellSetting/MaxCellCount/Arrows").gameObject;
 
+        m_BGMVolumeSlider = m_mainViewGameObject.transform.Find("Panel/CenterPanel/BGMVolumeSettings/Slider").GetComponent<Slider>();
+        m_BGMVolumeText = m_mainViewGameObject.transform.Find("Panel/CenterPanel/BGMVolumeSettings/VolumeText").GetComponent<Text>();
+        m_BGMVolumeSlider.onValueChanged.AddListener(OnBgmVolumeSliderValueChanged);
+        m_BGMVolumeSlider.value = AppConfig.Instance.BGMVolume;
+
+        m_EffectVolumeSlider = m_mainViewGameObject.transform.Find("Panel/CenterPanel/VolumeEffectSettings/Slider").GetComponent<Slider>();
+        m_EffectVolumeText = m_mainViewGameObject.transform.Find("Panel/CenterPanel/VolumeEffectSettings/VolumeText").GetComponent<Text>();
+        m_EffectVolumeSlider.onValueChanged.AddListener(OnVolumeEffectValueChanged);
+        m_isPresettingEffectVolume = true;
+        m_EffectVolumeSlider.value = AppConfig.Instance.EffectVolume;
+        m_isPresettingEffectVolume = false;
+        
         m_aboutButton = m_mainViewGameObject.transform.Find("Panel/CenterPanel/About").GetComponent<Button>();
         m_aboutButton.onClick.AddListener(OnAboutButtonClicked);
 
@@ -247,5 +264,20 @@ public class BingoSettingsView : AbstractView, IViewOperater
 
     public void OnThemeTypeChanged() {
 
+    }
+    
+    public void OnBgmVolumeSliderValueChanged(float value) {
+        m_BGMVolumeText.text = string.Format("{0}%", value * 10);
+        AppConfig.Instance.BGMVolume = Mathf.FloorToInt(value);
+        AudioManager.Instance.SetBgmVolume((int)value);
+    }
+
+    public void OnVolumeEffectValueChanged(float value) {
+        m_EffectVolumeText.text = string.Format("{0}%", value * 10);
+        AppConfig.Instance.EffectVolume = Mathf.FloorToInt(value);
+        AudioManager.Instance.SetEffectVolume((int)value);
+        if (m_isPresettingEffectVolume) return;
+        AudioManager.Instance.PlayNumberRotateEffectWithoutLoop();
+        AudioManager.Instance.PlayNumberCheckEffect();
     }
 }
