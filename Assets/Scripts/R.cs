@@ -11,6 +11,19 @@ namespace R
 {
     public static class Audios
     {
+        public static Asset<AudioClip> SfxBack => new("Assets/Games/Common/Audios/sfx_back.mp3");
+        public static Asset<AudioClip> SfxConfirm => new("Assets/Games/Common/Audios/sfx_confirm.mp3");
+        public static Asset<AudioClip> SfxSelect => new("Assets/Games/Common/Audios/sfx_select.mp3");
+        public static Asset<AudioClip> タンホイザーとアイーダメドレー => new("Assets/Games/Common/Commend/Audios/タンホイザーとアイーダメドレー.mp3");
+        public static Asset<AudioClip> ハレルヤ => new("Assets/Games/Common/Commend/Audios/ハレルヤ.mp3");
+        public static Asset<AudioClip> 威風堂々 => new("Assets/Games/Common/Commend/Audios/威風堂々.mp3");
+        public static Asset<AudioClip> 拍手 => new("Assets/Games/Common/Commend/Audios/拍手.mp3");
+        public static Asset<AudioClip> 指笛 => new("Assets/Games/Common/Commend/Audios/指笛.mp3");
+        public static Asset<AudioClip> 歓声 => new("Assets/Games/Common/Commend/Audios/歓声.mp3");
+        public static Asset<AudioClip> 見よ勇者は帰る => new("Assets/Games/Common/Commend/Audios/見よ、勇者は帰る.mp3");
+        public static Asset<AudioClip> BgmRouletteLoop => new("Assets/Games/Roulette/Audios/bgm_roulette_loop.mp3");
+        public static Asset<AudioClip> SfxRouletteGameDecelerating => new("Assets/Games/Roulette/Audios/sfx_roulette_game_decelerating.mp3");
+        public static Asset<AudioClip> SfxRouletteGameRotating => new("Assets/Games/Roulette/Audios/sfx_roulette_game_rotating.mp3");
         public static AudioClip _10Sec => Resources.Load<AudioClip>("Audio/10sec");
         public static AudioClip _20Sec => Resources.Load<AudioClip>("Audio/20sec");
         public static AudioClip _30Sec => Resources.Load<AudioClip>("Audio/30sec");

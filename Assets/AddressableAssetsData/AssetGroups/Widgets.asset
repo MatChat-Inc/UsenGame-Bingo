@@ -17,12 +17,6 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: cda2137e5028cbf448e043a8ea045fe3
   m_SerializeEntries:
-  - m_GUID: 0fed4de471319e7478fc81fb1ddc3a3d
-    m_Address: USEN.Games.Common.PopupOptionsView
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - UI
-    - USEN.Games.Common
   - m_GUID: 2967fa821446f1549be2f712e2567646
     m_Address: global.WidgetChild
     m_ReadOnly: 0
@@ -53,6 +47,90 @@ MonoBehaviour:
     m_SerializedLabels:
     - UI
     - global
+  - m_GUID: 8d8ff971562e09242a7328fe57647c0b
+    m_Address: global.CircularLoadingIndicator
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - UI
+    - global
+  - m_GUID: 38e6eb56a25db9d41b4f03585ffc8ead
+    m_Address: USEN.Games.Common.PopupOptionsView
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - UI
+    - USEN.Games.Common
+  - m_GUID: 5d347ec6cc10e794fbfa93fb6c9f4720
+    m_Address: USEN.Games.Common.CommendView
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - UI
+    - USEN.Games.Common
+  - m_GUID: af37b01362abf28498454501cc6ef828
+    m_Address: global.AlertDialogue
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - UI
+    - global
+  - m_GUID: bc4272d9a8e67cc4bb0cb91cd3c33df0
+    m_Address: USEN.Games.Common.PopupOptionsView2
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - UI
+    - USEN.Games.Common
+  - m_GUID: ab08e89e0bc37cb4aa62934ce7221b32
+    m_Address: USEN.Games.Roulette.RouletteCategoryList
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - UI
+    - USEN.Games.Roulette
+  - m_GUID: d40d509746a3deb4d9f3f86e3d97d4c6
+    m_Address: USEN.Games.Roulette.RouletteCategoryView
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - UI
+    - USEN.Games.Roulette
+  - m_GUID: 96b874bb70f59b04ba2d70862ad0bf4b
+    m_Address: USEN.Games.Roulette.RouletteContentList
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - UI
+    - USEN.Games.Roulette
+  - m_GUID: 1e337da079c70e54a948a7271715ab8e
+    m_Address: USEN.Games.Roulette.RouletteEditView
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - UI
+    - USEN.Games.Roulette
+  - m_GUID: 98b9f96af753ec348ad19380f4bcfa41
+    m_Address: USEN.Games.Roulette.RouletteGameSelectionList
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - UI
+    - USEN.Games.Roulette
+  - m_GUID: 986660a2fbfab4e4f8315f171677a1e2
+    m_Address: USEN.Games.Roulette.RouletteGameSelectionView
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - UI
+    - USEN.Games.Roulette
+  - m_GUID: 32634e36cb4371e43b2d989e9e1083ec
+    m_Address: USEN.Games.Roulette.RouletteGameView
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - UI
+    - USEN.Games.Roulette
+  - m_GUID: 7b91dacf70a8a0a4297372b9acb20d75
+    m_Address: USEN.Games.Roulette.RouletteSettingsView
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - UI
+    - USEN.Games.Roulette
+  - m_GUID: e0fe98d95d495be4a9acc931e4bbae7a
+    m_Address: USEN.Games.Roulette.RouletteStartView
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - UI
+    - USEN.Games.Roulette
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 5fb9abfb9f8a51d45b29881337ae0163, type: 2}
   m_SchemaSet:
