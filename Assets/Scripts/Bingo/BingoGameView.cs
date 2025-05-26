@@ -1,10 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using DG.Tweening;
+using Luna;
+using Luna.UI.Navigation;
 using Spine.Unity;
+using USEN.Games.Common;
+using USEN.Games.Roulette;
+using Object = UnityEngine.Object;
 
 public class BingoGameView : AbstractView, IViewOperater
 {
@@ -63,6 +69,11 @@ public class BingoGameView : AbstractView, IViewOperater
 
     Sequence m_transformSequence = DOTween.Sequence();
     BingoHomeView m_homeView;
+
+    private Navigator _navigator;
+    private bool _isPopupViewShowing;
+    private bool _isRouletteShowing;
+    private bool _isCommendationShowing;
 
     public void Build() {
         // var obj = Resources.Load<GameObject>(m_prefabPath);
@@ -130,6 +141,14 @@ public class BingoGameView : AbstractView, IViewOperater
         OnThemeTypeChanged();
 
         HandleSelectedEventTriggers();
+        
+        
+        _navigator ??= Navigator.Create(m_mainViewGameObject);
+    }
+    
+    public override void OnDestroy() 
+    {
+        _navigator.Destroy();
     }
 
     void HandleSelectedEventTriggers() {
@@ -263,6 +282,9 @@ public class BingoGameView : AbstractView, IViewOperater
     }
 
     public void Update() {
+        if (_isPopupViewShowing || _isRouletteShowing || _isCommendationShowing)
+            return;
+        
         if (ViewManager.Instance.IsLoadingShow()) {
             m_LoadingInterval += Time.deltaTime;
         }
@@ -342,6 +364,8 @@ public class BingoGameView : AbstractView, IViewOperater
 
     public void OnAndroidKeyDown(string keyName) {
         if (IsShowPausePanel()) return;
+        if (_isPopupViewShowing || _isRouletteShowing || _isCommendationShowing)
+            return;
 
         if (keyName == "blue") {
             if (IsShowHistory()) return;
@@ -645,5 +669,42 @@ public class BingoGameView : AbstractView, IViewOperater
             m_bingoSpineSkeletonGraphic = effectGO.GetComponent<SkeletonGraphic>();
             m_bingoSpineSkeletonGraphic.AnimationState.Complete += OnPlayComplete;
         }
+    }
+    
+    async void JumpToBatuGame() 
+    {
+        SFXManager.Play(R.Audios.SfxConfirm);
+        
+        await _navigator.Push<RouletteGameSelectionView>((view) => {
+            view.Category = RouletteManager.Instance.GetCategory("バツゲーム");
+            _isRouletteShowing = true;
+            AudioManager.Instance.PauseBgm();
+            R.Audios.BgmRouletteLoop.PlayAsBgm();
+            
+            if (RoulettePreferences.DisplayMode == RouletteDisplayMode.Random)
+            { 
+                _navigator.Push<USEN.Games.Roulette.RouletteGameView>(async (view) => {
+                    view.RouletteData = RouletteManager.Instance.GetRandomRoulette();
+                    _isRouletteShowing = true;
+                });
+            }
+        });
+        
+        AudioManager.Instance.UnPauseBgm();
+        
+        await UniTask.NextFrame();
+        _isRouletteShowing = false;
+    }
+    
+    async void JumpToCommendation() 
+    {
+        _isCommendationShowing = true;
+        AudioManager.Instance.PauseBgm();
+        BgmManager.Pause();
+        await _navigator.Push<CommendView>();
+        AudioManager.Instance.UnPauseBgm();
+        BgmManager.Resume();
+        SFXManager.Play(R.Audios.SfxBack);
+        _isCommendationShowing = false;
     }
 }
