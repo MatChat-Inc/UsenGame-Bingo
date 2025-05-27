@@ -40,11 +40,13 @@ public class BingoGameView : AbstractView, IViewOperater
     bool m_playRotationAnim = false;
     bool m_playRotationAnimBack = false;
 
-    Button m_rotateTestButton;
-    Text m_rotateTestButtonText;
+    Button confirmButton;
+    Text confirmButtonText;
+    Button m_yellowButton;
+    Text m_yellowButtonText;
     GameObject m_rotateBackGO;
-    Button m_playButton;
-    Text m_playButtonText;
+    Button m_blueButton;
+    Text m_blueButtonText;
     Button m_playbackButton;
     Button m_redButton;
     Button m_greenButton;
@@ -74,6 +76,8 @@ public class BingoGameView : AbstractView, IViewOperater
     private bool _isPopupViewShowing;
     private bool _isRouletteShowing;
     private bool _isCommendationShowing;
+    
+    private bool _initialized = false;
 
     public void Build() {
         // var obj = Resources.Load<GameObject>(m_prefabPath);
@@ -120,19 +124,23 @@ public class BingoGameView : AbstractView, IViewOperater
         m_bottomBackButton = m_mainViewGameObject.transform.Find("PlayPanel/BottomPanel/Button1").gameObject;
         m_bottomBackButton.GetComponent<Button>().onClick.AddListener(OnClickStopButton);
 
-        m_rotateTestButton = m_mainViewGameObject.transform.Find("PlayPanel/BottomPanel/Button5").GetComponent<Button>();
-        m_rotateTestButtonText = m_mainViewGameObject.transform.Find("PlayPanel/BottomPanel/Button5/Text").GetComponent<Text>();
-        m_rotateTestButton.onClick.AddListener(OnClickYellowButton);
+        confirmButton = m_mainViewGameObject.transform.Find("PlayPanel/BottomPanel/Button6").GetComponent<Button>();
+        confirmButton.onClick.AddListener(OnClickPlayButton);
+        confirmButtonText = m_mainViewGameObject.transform.Find("PlayPanel/BottomPanel/Button6/Text").GetComponent<Text>();
+        
+        m_yellowButton = m_mainViewGameObject.transform.Find("PlayPanel/BottomPanel/Button5").GetComponent<Button>();
+        m_yellowButtonText = m_mainViewGameObject.transform.Find("PlayPanel/BottomPanel/Button5/Text").GetComponent<Text>();
+        m_yellowButton.onClick.AddListener(JumpToCommendation);
         m_rotateBackGO = m_mainViewGameObject.transform.Find("PlayPanel/BottomPanel/Button5/BackImg").gameObject;
 
-        m_playButton = m_mainViewGameObject.transform.Find("PlayPanel/BottomPanel/Button2").GetComponent<Button>();
-        m_playButton.onClick.AddListener(OnClickPlayButton);
-        m_playButtonText = m_mainViewGameObject.transform.Find("PlayPanel/BottomPanel/Button2/Text").GetComponent<Text>();
+        m_blueButton = m_mainViewGameObject.transform.Find("PlayPanel/BottomPanel/Button2").GetComponent<Button>();
+        m_blueButton.onClick.AddListener(ShowHistory);
+        m_blueButtonText = m_mainViewGameObject.transform.Find("PlayPanel/BottomPanel/Button2/Text").GetComponent<Text>();
 
         m_redButton = m_mainViewGameObject.transform.Find("PlayPanel/BottomPanel/Button3").GetComponent<Button>();
-        m_redButton.onClick.AddListener(OnClickRedButton);
+        m_redButton.onClick.AddListener(ShowBingo);
         m_greenButton = m_mainViewGameObject.transform.Find("PlayPanel/BottomPanel/Button4").GetComponent<Button>();
-        m_greenButton.onClick.AddListener(OnClickGreenButton);
+        m_greenButton.onClick.AddListener(ShowReach);
 
         m_playbackButton = m_mainViewGameObject.transform.Find("PlayPanel/Game/PlayBackButton").GetComponent<Button>();
         m_playbackCanvasGroup = m_playbackButton.GetComponent<CanvasGroup>();
@@ -285,6 +293,16 @@ public class BingoGameView : AbstractView, IViewOperater
         if (_isPopupViewShowing || _isRouletteShowing || _isCommendationShowing)
             return;
         
+        if (_initialized) 
+        {
+            if (Input.GetKeyDown(KeyCode.Return) || Input.GetButtonDown("Submit")) 
+            {
+                if (IsShowHistory()) return;
+                if (!confirmButton.gameObject.activeSelf) return;
+                OnClickPlayButton();
+            }
+        }
+        
         if (ViewManager.Instance.IsLoadingShow()) {
             m_LoadingInterval += Time.deltaTime;
         }
@@ -322,7 +340,10 @@ public class BingoGameView : AbstractView, IViewOperater
                 Show();
 
                 m_rotateBackGO.SetActive(false);
-                m_rotateTestButtonText.text = "履歴";
+                m_blueButtonText.text = "履歴";
+                
+                m_blueButton.gameObject.SetActive(true);
+                m_yellowButton.gameObject.SetActive(true);
             }
             else {
                 m_checkAnimator.ForceStop();
@@ -360,6 +381,9 @@ public class BingoGameView : AbstractView, IViewOperater
         // }
 
         UpdatePlayButtonText();
+        
+        if (!_initialized) 
+            _initialized = true;
     }
 
     public void OnAndroidKeyDown(string keyName) {
@@ -368,25 +392,23 @@ public class BingoGameView : AbstractView, IViewOperater
             return;
 
         if (keyName == "blue") {
-            if (IsShowHistory()) return;
-            if (!m_playButton.gameObject.activeSelf) return;
-            OnClickPlayButton();
+            ShowHistory();
         } else if (keyName == "green") {
             if (IsShowHistory()) return;
-            OnClickGreenButton();
+            ShowBingo();
         } else if (keyName == "red") {
             if (IsShowHistory()) return;
-            OnClickRedButton();
+            ShowReach();
         } else if (keyName == "yellow") {
-            OnClickYellowButton();
+            JumpToCommendation();
         }
     }
 
     public void OnClickPlayButton() {
         if (!m_canPlayBingoAnim) return;
-        if (m_playButtonText.text == "ストップ")
+        if (confirmButtonText.text == "ストップ")
         {
-            m_playButton.transform.GetComponent<CanvasGroup>().alpha = 0.5f;
+            confirmButton.transform.GetComponent<CanvasGroup>().alpha = 0.5f;
         }
 
         if (m_gameData.IsAllChecked()) {
@@ -394,15 +416,15 @@ public class BingoGameView : AbstractView, IViewOperater
             ShowResetPanel();
         }else {
             m_checkAnimator.Animate(m_gameData);
-            m_playButtonText.text = "ストップ";
+            confirmButtonText.text = "ストップ";
         }
     }
 
     public void UpdatePlayButtonText() {
-        if (m_checkAnimator.isAnimteFinished() && m_playButtonText.text != "シャッフル")
+        if (m_checkAnimator.isAnimteFinished() && confirmButtonText.text != "シャッフル")
         {
-            m_playButtonText.text = "シャッフル";
-            m_playButton.transform.GetComponent<CanvasGroup>().alpha = 1.0f;
+            confirmButtonText.text = "シャッフル";
+            confirmButton.transform.GetComponent<CanvasGroup>().alpha = 1.0f;
         }
     }
 
@@ -441,7 +463,7 @@ public class BingoGameView : AbstractView, IViewOperater
 
     public void HideResetPanel() {
         m_resetPanel.gameObject.SetActive(false);
-        EventSystem.current.SetSelectedGameObject(m_playButton.gameObject);
+        EventSystem.current.SetSelectedGameObject(confirmButton.gameObject);
     }
 
     public void OnClickedResetBtn() {
@@ -467,14 +489,14 @@ public class BingoGameView : AbstractView, IViewOperater
         AppConfig.Instance.ClearGameData();
         Show();
 
-        m_rotateTestButtonText.text = "履歴";
+        m_blueButtonText.text = "履歴";
         m_rotateBackGO.SetActive(false);
         // reset music & effect
         AudioManager.Instance.PlayDefaultBgm();
         m_rotateBgEffect.AnimationState.SetAnimation(0, "panel_blue", true);
     }
 
-    void OnClickRedButton() {
+    void ShowBingo() {
         if (m_checkAnimator.isAnimating()) return;
         if (!m_canPlayBingoAnim) return;
         AudioManager.Instance.PlayReachClickEffect();
@@ -487,7 +509,7 @@ public class BingoGameView : AbstractView, IViewOperater
         AppConfig.Instance.rotateEaseExtraTime = 3.0f;
     }
 
-    void OnClickGreenButton() {
+    void ShowReach() {
         if (m_checkAnimator.isAnimating()) return;
         if (!m_canPlayBingoAnim) return;
         AudioManager.Instance.PlayBingoEffect();
@@ -507,7 +529,7 @@ public class BingoGameView : AbstractView, IViewOperater
         AppConfig.Instance.rotateEaseExtraTime = 0.0f;
     }
 
-    void OnClickYellowButton() 
+    void ShowHistory() 
     {
         if (m_checkAnimator.isAnimating()) return;
 
@@ -516,16 +538,18 @@ public class BingoGameView : AbstractView, IViewOperater
             // back but not reset
             m_playRotationAnimBack = true;
             HideNumberPanelTitle();
-            m_rotateBackGO.SetActive(false);
-            m_rotateTestButtonText.text = "履歴";
-            m_bottomBackButton.SetActive(true);
+            m_blueButton.gameObject.SetActive(true);
+            m_yellowButton.gameObject.SetActive(true);
+            // m_rotateBackGO.SetActive(false);
+            // m_blueButtonText.text = "履歴";
         }
         else if (m_numberPanel.localRotation == Quaternion.Euler(0, 30, 0))
         {
             OnClickRotateButton();
-            m_rotateBackGO.SetActive(true);
-            m_rotateTestButtonText.text = "戻る";
-            m_bottomBackButton.SetActive(false);
+            m_blueButton.gameObject.SetActive(false);
+            m_yellowButton.gameObject.SetActive(false);
+            // m_rotateBackGO.SetActive(true);
+            // m_blueButtonText.text = "戻る";
         }
     }
 
@@ -539,7 +563,7 @@ public class BingoGameView : AbstractView, IViewOperater
 
         m_redButton.gameObject.SetActive(false);
         m_greenButton.gameObject.SetActive(false);
-        m_playButton.gameObject.SetActive(false);
+        confirmButton.gameObject.SetActive(false);
 
         m_qiqiuSpineSkeletonGraphic.AnimationState.SetAnimation(0, bgRirekiSkeletonName, true);
     }
@@ -549,7 +573,7 @@ public class BingoGameView : AbstractView, IViewOperater
 
         m_redButton.gameObject.SetActive(true);
         m_greenButton.gameObject.SetActive(true);
-        m_playButton.gameObject.SetActive(true);
+        confirmButton.gameObject.SetActive(true);
 
         m_qiqiuSpineSkeletonGraphic.AnimationState.SetAnimation(0, bgSkeletonName, true);
     }
