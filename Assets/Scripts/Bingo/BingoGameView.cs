@@ -475,6 +475,9 @@ public class BingoGameView : AbstractView, IViewOperater
     void OnClickPlayBackButton() {
         m_playRotationAnimBack = true;
         HideNumberPanelTitle();
+        m_blueButton.gameObject.SetActive(true);
+        m_yellowButton.gameObject.SetActive(true);
+        
         // reset
         AppConfig.Instance.ClearGameData();
         Show();

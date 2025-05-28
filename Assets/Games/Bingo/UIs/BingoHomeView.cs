@@ -5,7 +5,7 @@ using Luna.UI.Navigation;
 using UnityEngine.Audio;
 using USEN.Games.Roulette;
 
-namespace USEN.Games.HighLow
+namespace USEN.Games.Bingo
 {
     public class BingoHomeView : Widget
     {
