@@ -72,11 +72,9 @@ public class BingoGameView : AbstractView, IViewOperater
     Sequence m_transformSequence = DOTween.Sequence();
     BingoHomeView m_homeView;
 
-    private Navigator _navigator;
     private bool _isPopupViewShowing;
     private bool _isRouletteShowing;
     private bool _isCommendationShowing;
-    
     private bool _initialized = false;
 
     public void Build() {
@@ -149,16 +147,8 @@ public class BingoGameView : AbstractView, IViewOperater
         OnThemeTypeChanged();
 
         HandleSelectedEventTriggers();
-        
-        
-        _navigator ??= Navigator.Create(m_mainViewGameObject);
     }
     
-    public override void OnDestroy() 
-    {
-        _navigator.Destroy();
-    }
-
     void HandleSelectedEventTriggers() {
         var eventTrigger = m_stopButton.gameObject.GetComponent<EventTrigger>();
         EventTrigger.Entry entry = new EventTrigger.Entry();
@@ -699,7 +689,7 @@ public class BingoGameView : AbstractView, IViewOperater
     {
         SFXManager.Play(R.Audios.SfxConfirm);
         
-        await _navigator.Push<RouletteGameSelectionView>((view) => {
+        await Navigator.Push<RouletteGameSelectionView>((view) => {
             view.Category = RouletteManager.Instance.GetCategory("バツゲーム");
             _isRouletteShowing = true;
             AudioManager.Instance.PauseBgm();
@@ -707,7 +697,7 @@ public class BingoGameView : AbstractView, IViewOperater
             
             if (RoulettePreferences.DisplayMode == RouletteDisplayMode.Random)
             { 
-                _navigator.Push<USEN.Games.Roulette.RouletteGameView>(async (view) => {
+                Navigator.Push<USEN.Games.Roulette.RouletteGameView>(async (view) => {
                     view.RouletteData = RouletteManager.Instance.GetRandomRoulette();
                     _isRouletteShowing = true;
                 });
@@ -725,7 +715,7 @@ public class BingoGameView : AbstractView, IViewOperater
         _isCommendationShowing = true;
         AudioManager.Instance.PauseBgm();
         BgmManager.Pause();
-        await _navigator.Push<CommendView>();
+        await Navigator.Push<CommendView>();
         AudioManager.Instance.UnPauseBgm();
         BgmManager.Resume();
         SFXManager.Play(R.Audios.SfxBack);

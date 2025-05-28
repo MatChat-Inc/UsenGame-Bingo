@@ -162,10 +162,11 @@ public class BingoHomeView : AbstractView, IViewOperater
     }
 
     void ShowSettingsView() {
-        if (m_settingsView == null) {
-            m_settingsView = new BingoSettingsView();
-        }
-        ViewManager.Instance.Push(m_settingsView);
+        // if (m_settingsView == null) {
+        //     m_settingsView = new BingoSettingsView();
+        // }
+        // ViewManager.Instance.Push(m_settingsView);
+        Navigator.Push<USEN.Games.Bingo.BingoSettingsView>();
     }
 
     void OnSettingsViewHide() {
