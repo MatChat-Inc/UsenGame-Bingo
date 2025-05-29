@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using Luna;
 using Luna.UI;
@@ -11,7 +12,12 @@ namespace USEN.Games.Bingo
     {
         public AudioMixerGroup bgmMixer; 
         public AudioMixerGroup sfxMixer;
-        
+
+        private void Awake()
+        {
+            Navigator.Create(this);
+        }
+
         private void OnEnable()
         {
             RouletteManager.Instance.Sync();

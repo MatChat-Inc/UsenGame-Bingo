@@ -385,10 +385,10 @@ public class BingoGameView : AbstractView, IViewOperater
             ShowHistory();
         } else if (keyName == "green") {
             if (IsShowHistory()) return;
-            ShowBingo();
+            ShowReach();
         } else if (keyName == "red") {
             if (IsShowHistory()) return;
-            ShowReach();
+            ShowBingo();
         } else if (keyName == "yellow") {
             JumpToCommendation();
         }
@@ -489,7 +489,7 @@ public class BingoGameView : AbstractView, IViewOperater
         m_rotateBgEffect.AnimationState.SetAnimation(0, "panel_blue", true);
     }
 
-    void ShowBingo() {
+    void ShowReach() {
         if (m_checkAnimator.isAnimating()) return;
         if (!m_canPlayBingoAnim) return;
         AudioManager.Instance.PlayReachClickEffect();
@@ -502,7 +502,7 @@ public class BingoGameView : AbstractView, IViewOperater
         AppConfig.Instance.rotateEaseExtraTime = 3.0f;
     }
 
-    void ShowReach() {
+    void ShowBingo() {
         if (m_checkAnimator.isAnimating()) return;
         if (!m_canPlayBingoAnim) return;
         AudioManager.Instance.PlayBingoEffect();

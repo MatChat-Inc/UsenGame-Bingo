@@ -1,3 +1,4 @@
+using Luna;
 using Luna.UI.Navigation;
 using UnityEngine;
 using UnityEngine.UI;
@@ -131,7 +132,8 @@ public class BingoHomeView : AbstractView, IViewOperater
         if (Input.GetButtonDown("Cancel")) {
             // USENSceneManager.Instance.LoadScene("GameEntries");
 #if UNITY_ANDROID
-            Navigator.QuitApplication();
+            if (m_mainViewGameObject.activeInHierarchy)
+                Android.Back();
 #endif
         }
     }
