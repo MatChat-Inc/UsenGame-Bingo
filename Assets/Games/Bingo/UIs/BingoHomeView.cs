@@ -20,7 +20,7 @@ namespace USEN.Games.Bingo
 
         private void OnEnable()
         {
-            RouletteManager.Instance.Sync();
+            // RouletteManager.Instance.Sync();
             
             // Audio volume
             BgmManager.Volume = AppConfig.Instance.BGMVolume * 0.1f;
