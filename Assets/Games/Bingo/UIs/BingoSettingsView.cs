@@ -33,8 +33,8 @@ namespace USEN.Games.Bingo
 
         private void Start()
         {
-            // Current display mode
-            var selectedIndex = (int) BingoPreferences.DisplayMode;
+            // Current theme
+            var selectedIndex = AppConfig.Instance.ThemeSelectedIdx;
             basicDisplayShowSettingsSlider.maxValue = basicDisplaySettingsToggles.Toggles.Count - 1;
             basicDisplayShowSettingsSlider.value = selectedIndex;
             basicDisplayShowSettingsSlider.onValueChanged.AddListener(OnBasicDisplayShowSettingsSliderValueChanged);
@@ -65,7 +65,7 @@ namespace USEN.Games.Bingo
             // Bottom panel
             bottomPanel.exitButton.onClick.AddListener(() => Navigator.Pop());
             
-            EventSystem.current.SetSelectedGameObject(commendationVideoSettingsSlider.gameObject);
+            EventSystem.current.SetSelectedGameObject(basicDisplayShowSettingsSlider.gameObject);
         }
         
         private void Update()
