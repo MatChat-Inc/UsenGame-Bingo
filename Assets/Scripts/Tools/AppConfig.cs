@@ -49,7 +49,7 @@ public class AppConfig
         }
         get
         {
-            _bgmVolume = PreferencesStorage.ReadInt("__BGM_VOLUME__", 5);
+            _bgmVolume = PreferencesStorage.ReadInt("__BGM_VOLUME__", 10);
             return _bgmVolume;
         }
     }
@@ -63,7 +63,7 @@ public class AppConfig
         }
         get
         {
-            _effectVolume = PreferencesStorage.ReadInt("__EFFECT_VOLUME__", 5);
+            _effectVolume = PreferencesStorage.ReadInt("__EFFECT_VOLUME__", 10);
             return _effectVolume;
         }
     }
