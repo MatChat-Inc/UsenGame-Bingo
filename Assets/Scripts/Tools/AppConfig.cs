@@ -74,11 +74,11 @@ public class AppConfig
         {
             _themeSelectedIdx = value;
             ThemeResManager.Instance.SetThemeType((EThemeTypes)value);
-            PreferencesStorage.SaveInt("__THEME_SELECTED__", value);
+            PreferencesStorage.SaveInt("__THEME_SELECTED__V2", value);
         }
         get
         {
-            _themeSelectedIdx = PreferencesStorage.ReadInt("__THEME_SELECTED__", 5);
+            _themeSelectedIdx = PreferencesStorage.ReadInt("__THEME_SELECTED__V2", 0);
             return _themeSelectedIdx;
         }
     }
