@@ -45,11 +45,11 @@ public class AppConfig
         set
         {
             _bgmVolume = value;
-            PreferencesStorage.SaveInt("__BGM_VOLUME__", value);
+            PreferencesStorage.SaveInt("__BGM_VOLUME__V2", value);
         }
         get
         {
-            _bgmVolume = PreferencesStorage.ReadInt("__BGM_VOLUME__", 10);
+            _bgmVolume = PreferencesStorage.ReadInt("__BGM_VOLUME__V2", 10);
             return _bgmVolume;
         }
     }
@@ -59,11 +59,11 @@ public class AppConfig
         set
         {
             _effectVolume = value;
-            PreferencesStorage.SaveInt("__EFFECT_VOLUME__", value);
+            PreferencesStorage.SaveInt("__EFFECT_VOLUME__V2", value);
         }
         get
         {
-            _effectVolume = PreferencesStorage.ReadInt("__EFFECT_VOLUME__", 10);
+            _effectVolume = PreferencesStorage.ReadInt("__EFFECT_VOLUME__V2", 10);
             return _effectVolume;
         }
     }
