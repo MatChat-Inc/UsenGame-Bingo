@@ -3,7 +3,9 @@ using System.Threading.Tasks;
 using Luna;
 using Luna.UI;
 using Luna.UI.Navigation;
+using UnityEngine;
 using UnityEngine.Audio;
+using USEN.Games.Common;
 using USEN.Games.Roulette;
 
 namespace USEN.Games.Bingo
@@ -37,6 +39,8 @@ namespace USEN.Games.Bingo
 
         private async void Start()
         {
+            UsenEvents.OnRemoconHomeButtonClicked += OnHomeButtonClicked;
+
             // Show loading indicator before necessary assets are loaded
             // await UniTask.Yield(PlayerLoopTiming.PreLateUpdate);
             // Navigator.ShowModal<RoundedCircularLoadingIndicator>();
@@ -48,6 +52,11 @@ namespace USEN.Games.Bingo
             // await Assets.Load("USEN.Games.Roulette", "Audio");
             //
             // Navigator.PopToRoot();
+        }
+        
+        private void OnHomeButtonClicked(object sender, EventArgs e)
+        {
+            Application.Quit();
         }
     }
 }

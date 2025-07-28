@@ -15,7 +15,8 @@ namespace USEN.Games.Roulette
                     popup.onOption1 = () => Navigator.Pop(RouletteData);
                     // popup.onOption2 = () => Navigator.PopUntil<BingoGameOverView, RouletteData>(RouletteData);
 #if UNITY_ANDROID
-                    popup.onOption3 = () => Android.Back();
+                    // popup.onOption3 = () => Android.Back();
+                    popup.onOption3 = () => Application.Quit();
 #else
                     popup.onOption3 = () => Application.Quit();
 #endif
