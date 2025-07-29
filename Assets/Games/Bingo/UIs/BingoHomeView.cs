@@ -19,6 +19,23 @@ namespace USEN.Games.Bingo
         {
             Navigator.Create(this);
         }
+        
+        private void Start()
+        {
+            UsenEvents.OnRemoconHomeButtonClicked += OnHomeButtonClicked;
+
+            // Show loading indicator before necessary assets are loaded
+            // await UniTask.Yield(PlayerLoopTiming.PreLateUpdate);
+            // Navigator.ShowModal<RoundedCircularLoadingIndicator>();
+            //
+            // var bgm = await R.Audios.BgmHighLow.Load();
+            // BgmManager.Play(bgm);
+            //
+            // await Assets.Load(GetType().Namespace, "Audio");
+            // await Assets.Load("USEN.Games.Roulette", "Audio");
+            //
+            // Navigator.PopToRoot();
+        }
 
         private void OnEnable()
         {
@@ -35,23 +52,6 @@ namespace USEN.Games.Bingo
             }, TaskScheduler.FromCurrentSynchronizationContext());
             
             Navigator.RootWidget = this;
-        }
-
-        private async void Start()
-        {
-            UsenEvents.OnRemoconHomeButtonClicked += OnHomeButtonClicked;
-
-            // Show loading indicator before necessary assets are loaded
-            // await UniTask.Yield(PlayerLoopTiming.PreLateUpdate);
-            // Navigator.ShowModal<RoundedCircularLoadingIndicator>();
-            //
-            // var bgm = await R.Audios.BgmHighLow.Load();
-            // BgmManager.Play(bgm);
-            //
-            // await Assets.Load(GetType().Namespace, "Audio");
-            // await Assets.Load("USEN.Games.Roulette", "Audio");
-            //
-            // Navigator.PopToRoot();
         }
         
         private void OnHomeButtonClicked(object sender, EventArgs e)

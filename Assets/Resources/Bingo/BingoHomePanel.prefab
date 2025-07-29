@@ -229,7 +229,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22f236fec674b4a6d88f85cade4c3027, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_selectedImage: {fileID: 0}
+  m_selectedGO: {fileID: 0}
   m_text: {fileID: 7775207823737650835}
   m_selectedTextColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &4979550350696609713
@@ -540,7 +540,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22f236fec674b4a6d88f85cade4c3027, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_selectedImage: {fileID: 0}
+  m_selectedGO: {fileID: 0}
   m_text: {fileID: 7238839269255574741}
   m_selectedTextColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &8724713845114054686
@@ -872,6 +872,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9113199898880587868}
+  - component: {fileID: 1156001611241762160}
+  - component: {fileID: 5053390929939446649}
+  - component: {fileID: 2161561934094689346}
+  - component: {fileID: 2690683364946198243}
+  - component: {fileID: 6664050913198179142}
   m_Layer: 5
   m_Name: BingoHomePanel
   m_TagString: Untagged
@@ -903,6 +908,78 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!223 &1156001611241762160
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9113199898880587869}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
+--- !u!222 &5053390929939446649
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9113199898880587869}
+  m_CullTransparentMesh: 1
+--- !u!225 &2161561934094689346
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9113199898880587869}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &2690683364946198243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9113199898880587869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 55
+--- !u!114 &6664050913198179142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9113199898880587869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ade12bfe31e5ca47aca70278f44efdc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bgmMixer: {fileID: 0}
+  sfxMixer: {fileID: 0}
 --- !u!1 &9113199899096928714
 GameObject:
   m_ObjectHideFlags: 0
