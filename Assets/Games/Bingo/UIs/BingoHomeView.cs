@@ -42,10 +42,10 @@ namespace USEN.Games.Bingo
             // RouletteManager.Instance.Sync();
             
             // Audio volume
-            BgmManager.Volume = AppConfig.Instance.BGMVolume * 0.1f;
-            BgmManager.Mixer = bgmMixer;
-            SFXManager.Volume = AppConfig.Instance.EffectVolume * 0.1f;
-            SFXManager.Mixer = sfxMixer;
+            // BgmManager.Volume = AppConfig.Instance.BGMVolume * 0.1f;
+            // BgmManager.Mixer = bgmMixer;
+            // SFXManager.Volume = AppConfig.Instance.EffectVolume * 0.1f;
+            // SFXManager.Mixer = sfxMixer;
             
             API.GetRandomSetting().ContinueWith(task => {
                 RoulettePreferences.DisplayMode = (RouletteDisplayMode) task.Result.random;
